@@ -1,0 +1,6 @@
+config.php
+contact_log.txt
+vendor/
+.gemini/
+*.log
+.htaccess

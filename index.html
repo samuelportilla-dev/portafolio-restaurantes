@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Samuel Portilla | Menús Digitales para Restaurantes en Cúcuta</title>
+    <meta name="description" content="Sistemas de pedidos inteligentes para restaurantes en Cúcuta. Automatiza tu menú, elimina errores y despacha más rápido. Hamburgueserías, pizzerías y asaderos.">
+    <meta name="keywords" content="menú digital restaurante Cúcuta, sistema pedidos restaurante, menú QR Cúcuta, pedidos automáticos WhatsApp, menú interactivo restaurante">
+    <meta name="author" content="Samuel Portilla">
+    <meta name="robots" content="index, follow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/icono.png">
+    <link rel="apple-touch-icon" href="assets/icono.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Menús Digitales para Restaurantes en Cúcuta | Samuel Portilla">
+    <meta property="og:description" content="Deja de perder pedidos por WhatsApp en horas pico. Sistemas de pedidos inteligentes para restaurantes.">
+    <meta property="og:image" content="assets/hero-burger.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- NAVEGACIÓN FIJA -->
+    <!-- ============================================ -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#inicio" class="nav-logo">
+                <span class="logo-icon">🍔</span>
+                <span class="logo-text">Samuel<span class="logo-accent">Portilla</span></span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#problema" class="nav-link">El Problema</a></li>
+                <li><a href="#portafolio" class="nav-link">Portafolio</a></li>
+                <li><a href="#como-funciona" class="nav-link">Cómo Funciona</a></li>
+                <li><a href="#contacto" class="nav-link nav-cta-link">Agendar Demo</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú de navegación">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ============================================ -->
+    <!-- 1. HERO SECTION — El Gancho -->
+    <!-- ============================================ -->
+    <section id="inicio" class="hero">
+        <div class="hero-bg-shapes">
+            <div class="hero-shape hero-shape-1"></div>
+            <div class="hero-shape hero-shape-2"></div>
+            <div class="hero-shape hero-shape-3"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Especialista en restaurantes de Cúcuta
+                </div>
+                <h1 class="hero-title">
+                    Deja de perder pedidos por WhatsApp<br>
+                    <span class="hero-highlight">en horas pico.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Automatiza tu menú y despacha más rápido.
+                </p>
+                <p class="hero-description">
+                    Sistemas de pedidos inteligentes para restaurantes en Cúcuta que quieren 
+                    verse más profesionales y <strong>eliminar los errores de cuenta.</strong>
+                </p>
+                <div class="hero-actions">
+                    <a href="#portafolio" class="btn btn-primary" id="cta-hero-main">
+                        <i class="fas fa-play-circle"></i>
+                        Ver cómo funciona
+                    </a>
+                    <a href="#contacto" class="btn btn-ghost" id="cta-hero-secondary">
+                        <i class="fab fa-whatsapp"></i>
+                        Hablar con Samuel
+                    </a>
+                </div>
+                <div class="hero-trust">
+                    <div class="trust-avatars">
+                        <div class="trust-avatar">🍕</div>
+                        <div class="trust-avatar">🍔</div>
+                        <div class="trust-avatar">🍗</div>
+                    </div>
+                    <span>Restaurantes en Cúcuta ya usan este sistema</span>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-phone-mockup">
+                    <div class="phone-frame">
+                        <div class="phone-notch"></div>
+                        <img src="assets/mockup-hamburguesa.png" alt="Vista previa de menú digital para restaurante" class="phone-screen" loading="eager">
+                    </div>
+                    <div class="phone-glow"></div>
+                </div>
+                <div class="hero-floating-card card-order">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <strong>Nuevo Pedido</strong>
+                        <small>2x Hamburguesa Doble + Papas</small>
+                    </div>
+                </div>
+                <div class="hero-floating-card card-notification">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <strong>Total automático</strong>
+                        <small>$38.000 — Dirección incluida</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 2. SECCIÓN DEL PROBLEMA — Challenger Sale -->
+    <!-- ============================================ -->
+    <section id="problema" class="problem-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">El cambio que tu negocio necesita</span>
+                <h2 class="section-title">¿Te suena familiar?</h2>
+                <p class="section-subtitle">
+                    Cada sábado en la noche es la misma historia. Pero no tiene que ser así.
+                </p>
+            </div>
+
+            <div class="comparison-grid">
+                <!-- EL PASADO (Dolor) -->
+                <div class="comparison-card comparison-past" id="card-past">
+                    <div class="card-header-badge card-badge-past">
+                        <i class="fas fa-times-circle"></i>
+                        Así se ve hoy
+                    </div>
+                    <div class="comparison-content">
+                        <ul class="pain-list">
+                            <li>
+                                <div class="pain-icon"><i class="fas fa-comment-dots"></i></div>
+                                <div class="pain-text">
+                                    <strong>Clientes pidiendo el PDF del menú</strong>
+                                    <span>"Mándame la carta" — 15 veces al día</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="pain-icon"><i class="fas fa-comments"></i></div>
+                                <div class="pain-text">
+                                    <strong>Chats acumulados sin responder</strong>
+                                    <span>Pierdes clientes que no esperan</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="pain-icon"><i class="fas fa-calculator"></i></div>
+                                <div class="pain-text">
+                                    <strong>Sumas mal hechas a mano</strong>
+                                    <span>"Eran $38.000, no $35.000..."</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="pain-icon"><i class="fas fa-head-side-virus"></i></div>
+                                <div class="pain-text">
+                                    <strong>Estrés el sábado por la noche</strong>
+                                    <span>Cocinando, respondiendo chats y sumando</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="pain-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                <div class="pain-text">
+                                    <strong>"¿Cuál era la dirección?"</strong>
+                                    <span>Buscando entre 50 chats la dirección correcta</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- EL FUTURO (Solución) -->
+                <div class="comparison-card comparison-future" id="card-future">
+                    <div class="card-header-badge card-badge-future">
+                        <i class="fas fa-check-circle"></i>
+                        Así se ve con tu menú digital
+                    </div>
+                    <div class="comparison-content">
+                        <ul class="benefit-list">
+                            <li>
+                                <div class="benefit-icon"><i class="fas fa-link"></i></div>
+                                <div class="benefit-text">
+                                    <strong>Tu cliente entra a un link</strong>
+                                    <span>Un menú profesional con fotos y precios</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="benefit-icon"><i class="fas fa-hand-pointer"></i></div>
+                                <div class="benefit-text">
+                                    <strong>Elige su comida sin ayuda</strong>
+                                    <span>Con adiciones, tamaños y personalización</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="benefit-icon"><i class="fab fa-whatsapp"></i></div>
+                                <div class="benefit-text">
+                                    <strong>Te llega el pedido organizado</strong>
+                                    <span>Con dirección, total y detalle exacto</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="benefit-icon"><i class="fas fa-utensils"></i></div>
+                                <div class="benefit-text">
+                                    <strong>Solo cocinas y despachas</strong>
+                                    <span>Cero errores, cero tiempo perdido</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
+                                <div class="benefit-text">
+                                    <strong>Tu negocio se ve profesional</strong>
+                                    <span>Imagen premium sin invertir millones</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 3. PORTAFOLIO / CASOS DE USO — Prueba Social -->
+    <!-- ============================================ -->
+    <section id="portafolio" class="portfolio-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Prueba social</span>
+                <h2 class="section-title">Así se ven los negocios que ya dieron el salto</h2>
+                <p class="section-subtitle">
+                    Cada tipo de restaurante tiene sus necesidades. Mira cómo resolvemos cada una.
+                </p>
+            </div>
+
+            <div class="portfolio-grid">
+
+                <!-- CASO 1: Comidas Rápidas -->
+                <div class="portfolio-card" id="case-fast-food">
+                    <div class="portfolio-card-visual">
+                        <div class="portfolio-phone">
+                            <img src="assets/mockup-hamburguesa.png" alt="Demo de menú digital para hamburgueserías" loading="lazy">
+                        </div>
+                        <div class="portfolio-card-tag tag-orange">Comidas Rápidas</div>
+                    </div>
+                    <div class="portfolio-card-info">
+                        <h3>Hamburgueserías & Perros</h3>
+                        <p>
+                            Perfecto para negocios con alto volumen y muchas opciones de personalización. 
+                            Tu cliente elige su hamburguesa, agrega tocineta, elige sus salsas y personaliza 
+                            al 100% — sin llamarte a preguntar.
+                        </p>
+                        <div class="portfolio-features">
+                            <span><i class="fas fa-check"></i> Adiciones ilimitadas</span>
+                            <span><i class="fas fa-check"></i> Combos automáticos</span>
+                            <span><i class="fas fa-check"></i> fotos que abren el apetito</span>
+                            <span><i class="fas fa-bolt"></i> Panel de control para edición rápida</span>
+                        </div>
+                        <a href="https://demostracionbasica.netlify.app/" target="_blank" class="btn btn-outline" id="cta-demo-fast-food">
+                            <i class="fas fa-external-link-alt"></i>
+                            Ver Demo Interactiva
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CASO 2: Pizzerías -->
+                <div class="portfolio-card portfolio-card-reverse" id="case-pizza">
+                    <div class="portfolio-card-visual">
+                        <div class="portfolio-phone">
+                            <img src="assets/mockup-pizzeria.png" alt="Demo de menú digital para pizzerías" loading="lazy">
+                        </div>
+                        <div class="portfolio-card-tag tag-red">Pizzerías</div>
+                    </div>
+                    <div class="portfolio-card-info">
+                        <h3>Pizzerías & Italianas</h3>
+                        <p>
+                            Evita que el cliente se enrede preguntando los sabores disponibles. 
+                            Elige tamaño, elige mitades, agrega ingredientes extra — todo visual 
+                            y sin necesidad de explicar nada por chat.
+                        </p>
+                        <div class="portfolio-features">
+                            <span><i class="fas fa-check"></i> Selección de tamaños</span>
+                            <span><i class="fas fa-check"></i> Opción de mitades</span>
+                            <span><i class="fas fa-check"></i> Ingredientes extra</span>
+                            <span><i class="fas fa-bolt"></i> Panel de control para edición rápida</span>
+                        </div>
+                        <a href="http://localhost/demo-intermedio/" target="_blank" class="btn btn-outline" id="cta-demo-pizza">
+                            <i class="fas fa-external-link-alt"></i>
+                            Ver Demo Interactiva
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CASO 3: Sistema Total -->
+                <div class="portfolio-card" id="case-pro-system">
+                    <div class="portfolio-card-visual">
+                        <div class="portfolio-phone">
+                            <img src="assets/mockup-almuerzo.png" alt="Demo de sistema de gestión total para restaurantes" loading="lazy">
+                        </div>
+                        <div class="portfolio-card-tag tag-green">Sistema Premium</div>
+                    </div>
+                    <div class="portfolio-card-info">
+                        <h3>Gestión Total con Roles (Mesas, Cocina y Admin)</h3>
+                        <p>
+                            El sistema más avanzado para restaurantes que necesitan control total. 
+                            Conecta a meseros, cocina y administración en una sola plataforma. 
+                            Gestiona mesas en tiempo real, controla inventarios y visualiza el progreso de cada pedido.
+                        </p>
+                        <div class="portfolio-features">
+                            <span><i class="fas fa-check"></i> Roles de Mesero, Cocina y Admin</span>
+                            <span><i class="fas fa-check"></i> Gestión de mesas en tiempo real</span>
+                            <span><i class="fas fa-check"></i> Reportes de ventas avanzados</span>
+                            <span><i class="fas fa-bolt"></i> Panel de control para edición rápida</span>
+                        </div>
+                        <a href="https://wa.me/573112518913?text=Hola%20Samuel%2C%20me%20interesa%20conocer%20m%C3%A1s%20detalles%20sobre%20el%20Sistema%20Premium%20de%20Gesti%C3%B3n%20Total." target="_blank" class="btn btn-outline" id="cta-demo-pro">
+                            <i class="fab fa-whatsapp"></i>
+                            Solicitar más detalles
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- NUEVA SECCIÓN: PANEL DE CONTROL              -->
+    <!-- ============================================ -->
+    <section id="panel-control" class="admin-section">
+        <div class="container admin-grid">
+            <div class="admin-visual">
+                <div class="admin-phone-wrapper">
+                    <img src="assets/mockup-control.png" alt="Panel de control administrativo" class="admin-mockup">
+                    <div class="admin-glow"></div>
+                </div>
+            </div>
+            <div class="admin-content">
+                <span class="section-badge">Control total</span>
+                <h2 class="section-title">Gestiona todo desde tu celular</h2>
+                <p class="section-subtitle">
+                    No necesitas llamarme para cambiar un precio o un plato. Tú eres el dueño de tu menú y de tu negocio.
+                </p>
+                
+                <div class="admin-features">
+                    <div class="admin-feature-card">
+                        <div class="feature-icon"><i class="fas fa-tag"></i></div>
+                        <div class="feature-text">
+                            <h3>Cambia precios en segundos</h3>
+                            <p>¿Subió la carne? Actualiza tus precios al instante sin esperar a nadie.</p>
+                        </div>
+                    </div>
+                    <div class="admin-feature-card">
+                        <div class="feature-icon"><i class="fas fa-power-off"></i></div>
+                        <div class="feature-text">
+                            <h3>Activa o desactiva platos</h3>
+                            <p>¿Se terminó un ingrediente? Apaga el plato con un toque para evitar pedidos fallidos.</p>
+                        </div>
+                    </div>
+                    <div class="admin-feature-card">
+                        <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="feature-text">
+                            <h3>100% Mobile Friendly</h3>
+                            <p>Diseñado específicamente para que lo controles con una mano mientras atiendes tu local.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================ -->
+    <!-- 4. CÓMO FUNCIONA — 3 pasos simples -->
+    <!-- ============================================ -->
+    <section id="como-funciona" class="how-it-works-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Simple y efectivo</span>
+                <h2 class="section-title">¿Cómo funciona?</h2>
+                <p class="section-subtitle">
+                    Tu cliente pide, tú cocinas. Así de simple.
+                </p>
+            </div>
+
+            <div class="steps-container">
+                <!-- Paso 1 -->
+                <div class="step-card" id="step-1">
+                    <div class="step-number">1</div>
+                    <div class="step-icon-wrap">
+                        <div class="step-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                    </div>
+                    <h3>Tu cliente entra al link</h3>
+                    <p>
+                        Escoge sus platos con fotos que abren el apetito. 
+                        Personaliza adiciones, tamaños y cantidad. <strong>Todos nuestros planes incluyen un panel desde tu celular </strong> para que edites precios y platos en segundos.
+                    </p>
+                </div>
+
+                <div class="step-connector">
+                    <div class="connector-line"></div>
+                    <div class="connector-arrow"><i class="fas fa-chevron-right"></i></div>
+                </div>
+
+                <!-- Paso 2 -->
+                <div class="step-card" id="step-2">
+                    <div class="step-number">2</div>
+                    <div class="step-icon-wrap">
+                        <div class="step-icon step-icon-whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                    </div>
+                    <h3>Te llega al WhatsApp</h3>
+                    <p>
+                        Un mensaje estructurado con el pedido exacto, 
+                        la dirección completa y el total a cobrar. Sin errores.
+                    </p>
+                </div>
+
+                <div class="step-connector">
+                    <div class="connector-line"></div>
+                    <div class="connector-arrow"><i class="fas fa-chevron-right"></i></div>
+                </div>
+
+                <!-- Paso 3 -->
+                <div class="step-card" id="step-3">
+                    <div class="step-number">3</div>
+                    <div class="step-icon-wrap">
+                        <div class="step-icon step-icon-cook">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                    </div>
+                    <h3>Solo cocinas y despachas</h3>
+                    <p>
+                        Cero errores humanos, cero tiempo perdido chateando. 
+                        Tú te enfocas en lo que mejor sabes hacer: cocinar.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Estadísticas de impacto -->
+            <div class="impact-stats">
+                <div class="impact-stat">
+                    <div class="impact-number" data-target="0">0</div>
+                    <div class="impact-label">Errores de cuenta</div>
+                </div>
+                <div class="impact-divider"></div>
+                <div class="impact-stat">
+                    <div class="impact-number">10<span class="impact-unit">seg</span></div>
+                    <div class="impact-label">Para actualizar el menú</div>
+                </div>
+                <div class="impact-divider"></div>
+                <div class="impact-stat">
+                    <div class="impact-number">100<span class="impact-unit">%</span></div>
+                    <div class="impact-label">Desde tu celular</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 5. FOOTER & CTA FINAL — Micro compromiso -->
+    <!-- ============================================ -->
+    <section id="contacto" class="cta-final-section">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-content">
+                    <div class="cta-emoji">🤝</div>
+                    <h2 class="cta-title">¿Quieres ver cómo se vería para tu negocio?</h2>
+                    <p class="cta-description">
+                        Soy <strong>Samuel Portilla</strong>, especialista en sistematizar restaurantes en Cúcuta. 
+                        Agenda una videollamada corta de <strong>10 minutos</strong> y te muestro un prototipo 
+                        adaptado a tu marca, <em>sin compromiso</em>.
+                    </p>
+                    <div class="cta-features">
+                        <div class="cta-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>100% personalizado a tu marca</span>
+                        </div>
+                        <div class="cta-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Sin compromiso de compra</span>
+                        </div>
+                        <div class="cta-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Listo en menos de una semana</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/573112518913?text=Hola%20Samuel%2C%20vi%20tu%20p%C3%A1gina%20y%20me%20interesa%20un%20men%C3%BA%20digital%20para%20mi%20restaurante.%20%C2%BFPodemos%20agendar%20una%20demo%3F" 
+                       target="_blank" 
+                       class="btn btn-cta-final" 
+                       id="cta-whatsapp-final">
+                        <i class="fab fa-whatsapp"></i>
+                        Agendar Demo de 10 Minutos
+                    </a>
+                    <p class="cta-micro-text">
+                        <i class="fas fa-lock"></i>
+                        Sin compromisos. Solo conversamos sobre tu negocio.
+                    </p>
+                </div>
+                <div class="cta-visual">
+                    <img src="assets/hero-burger.png" alt="Comida de restaurante" loading="lazy" class="cta-food-image">
+                    <div class="cta-visual-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🍔</span>
+                    <span class="footer-brand-text">Samuel Portilla</span>
+                    <p>Sistemas de pedidos inteligentes para restaurantes en Cúcuta.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#inicio">Inicio</a>
+                    <a href="#problema">El Problema</a>
+                    <a href="#portafolio">Portafolio</a>
+                    <a href="#como-funciona">Cómo Funciona</a>
+                    <a href="#contacto">Contacto</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://wa.me/573112518913" target="_blank" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Samuel Portilla. Soluciones digitales para restaurantes en Cúcuta, Colombia.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/573112518913?text=Hola%20Samuel%2C%20quiero%20un%20men%C3%BA%20digital%20para%20mi%20restaurante" 
+       target="_blank" 
+       class="whatsapp-float" 
+       id="whatsapp-float"
+       aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">¿Hablamos?</span>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

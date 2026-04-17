@@ -1,0 +1,14 @@
+{
+    "name": "samuel/portafolio",
+    "description": "Portafolio personal de Samuel Portilla",
+    "type": "project",
+    "require": {
+        "sendgrid/sendgrid": "^7.9"
+    },
+    "authors": [
+        {
+            "name": "Samuel Portilla",
+            "email": "samuelportilla.office@gmail.com"
+        }
+    ]
+}
