@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Sistema Premium | Gestión Total para Restaurantes</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/icono.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* BASE PREMIUM OVERRIDES */
+        body {
+            background-color: #07070A; /* Deeper, richer black */
+            color: #EDEDF5;
+        }
+
+        .navbar {
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            background: rgba(7, 7, 10, 0.8) !important;
+            backdrop-filter: blur(24px) !important;
+            -webkit-backdrop-filter: blur(24px) !important;
+        }
+
+        /* HERO PREMIUM */
+        .premium-hero {
+            padding-top: 180px;
+            padding-bottom: 140px;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(232, 93, 42, 0.12) 0%, #07070A 60%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .premium-hero::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw;
+            height: 80vw;
+            background: radial-gradient(circle, rgba(232, 93, 42, 0.05) 0%, transparent 60%);
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .premium-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDMpIi8+Cjwvc3ZnPg==') repeat;
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: var(--space-lg);
+            background: linear-gradient(to right, #FFFFFF, #A0A0B8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(135deg, #E85D2A 0%, #FF9F43 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-body);
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-weight: 400;
+            color: #A0A0B8;
+            max-width: 600px;
+            margin: 0 auto var(--space-xl);
+            line-height: 1.6;
+        }
+
+        .hero-badge-premium {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #E85D2A;
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: var(--space-xl);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        /* FEATURES GRID */
+        .problem-section {
+            background: #07070A;
+            padding-top: var(--space-xl);
+            padding-bottom: var(--space-4xl);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left, rgba(232, 93, 42, 0.15), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            border-color: rgba(232, 93, 42, 0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(232, 93, 42, 0.05);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon-wrapper {
+            width: 64px;
+            height: 64px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon-wrapper {
+            background: rgba(232, 93, 42, 0.1);
+            border-color: rgba(232, 93, 42, 0.3);
+            transform: scale(1.05);
+        }
+
+        .feature-icon-lg {
+            font-size: 1.8rem;
+            color: #E85D2A;
+            background: linear-gradient(135deg, #FF9F43, #E85D2A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #FFFFFF;
+            position: relative;
+            z-index: 2;
+            letter-spacing: -0.01em;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+            flex-grow: 1;
+        }
+
+        .feature-list li {
+            font-size: 0.95rem;
+            color: #A0A0B8;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            line-height: 1.6;
+        }
+
+        .feature-list li i {
+            color: #E85D2A;
+            margin-top: 4px;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        /* CTA SECTION FIX */
+        .cta-premium {
+            padding: 6rem 0;
+            background: #07070A;
+            position: relative;
+        }
+
+        /* Override cta-card for the premium page to make it perfectly centered and block-level */
+        .cta-card-centered {
+            display: block; /* Override the grid */
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 32px;
+            padding: 5rem 3rem;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        .cta-card-centered::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #E85D2A, transparent);
+            opacity: 0.5;
+        }
+
+        .cta-card-centered::after {
+            content: '';
+            position: absolute;
+            bottom: -50px; left: 50%;
+            transform: translateX(-50%);
+            width: 300px; height: 100px;
+            background: #E85D2A;
+            filter: blur(100px);
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        .cta-icon-premium {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            background: linear-gradient(135deg, #FFFFFF, #A0A0B8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+        }
+
+        .cta-card-centered .cta-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-card-centered .cta-description {
+            font-size: 1.1rem;
+            color: #A0A0B8;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .btn-cta-premium {
+            background: #E85D2A;
+            color: white;
+            padding: 16px 40px;
+            font-size: 1.05rem;
+            border-radius: 100px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(232, 93, 42, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .btn-cta-premium:hover {
+            transform: translateY(-3px);
+            background: #F06A3A;
+            box-shadow: 0 15px 30px rgba(232, 93, 42, 0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+
+        .btn-cta-premium i {
+            font-size: 1.2rem;
+        }
+
+        /* Subtle glowing dots background */
+        .glowing-dots {
+            position: absolute;
+            width: 4px; height: 4px;
+            background: #E85D2A;
+            border-radius: 50%;
+            filter: blur(2px);
+            opacity: 0.5;
+            animation: float-dot 10s infinite alternate;
+        }
+
+        @keyframes float-dot {
+            0% { transform: translateY(0) scale(1); opacity: 0.2; }
+            100% { transform: translateY(-30px) scale(1.5); opacity: 0.8; }
+        }
+
+        /* WORKFLOW TIMELINE */
+        .workflow-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .workflow-timeline {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .workflow-step {
+            background: rgba(255,255,255,0.01);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            display: flex;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .workflow-step:hover {
+            background: rgba(232, 93, 42, 0.03);
+            border-color: rgba(232, 93, 42, 0.2);
+            transform: translateX(5px);
+        }
+        .step-num {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+            line-height: 1;
+        }
+        .workflow-step:hover .step-num {
+            -webkit-text-stroke: 1px #E85D2A;
+            color: rgba(232, 93, 42, 0.1);
+        }
+        .step-content h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: #EDEDF5;
+            margin-bottom: 0.5rem;
+        }
+        .step-content p {
+            font-size: 0.95rem;
+            color: #A0A0B8;
+            line-height: 1.6;
+        }
+
+        /* SECURITY GRID */
+        .security-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .security-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .security-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 2rem;
+            border-radius: 16px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, transparent 100%);
+            border-left: 3px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        .security-card:hover {
+            border-left-color: #E85D2A;
+            background: linear-gradient(145deg, rgba(232, 93, 42, 0.05) 0%, transparent 100%);
+        }
+        .security-card i {
+            font-size: 1.8rem;
+            color: #E85D2A;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        .security-card h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: #EDEDF5;
+            margin-bottom: 0.5rem;
+        }
+        .security-card p {
+            font-size: 0.95rem;
+            color: #A0A0B8;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🍔</span>
+                <span class="logo-text">Samuel<span class="logo-accent">Portilla</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li>
+                    <a href="index.html" class="btn-outline" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; color: #EDEDF5; padding: 10px 24px; font-size: 0.85rem;">
+                        <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Volver al Inicio
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="premium-hero">
+        <!-- Decoration dots -->
+        <div class="glowing-dots" style="top: 20%; left: 20%;"></div>
+        <div class="glowing-dots" style="top: 70%; right: 25%; animation-delay: 2s;"></div>
+        <div class="glowing-dots" style="top: 40%; left: 80%; animation-delay: 4s;"></div>
+        
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="hero-badge-premium">
+                <span style="width:6px; height:6px; border-radius:50%; background:#E85D2A; display:inline-block; box-shadow: 0 0 10px #E85D2A;"></span> 
+                Infraestructura Empresarial
+            </div>
+            <h1 class="hero-title">Sistema de Gestión <span class="hero-highlight">Total</span></h1>
+            <p class="hero-subtitle">
+                Conecta de manera fluida y en tiempo real a tus meseros, el equipo de cocina y tu panel de administración. 
+                Construido bajo estándares de alta disponibilidad para restaurantes de alto flujo.
+            </p>
+        </div>
+    </section>
+
+    <!-- CARACTERÍSTICAS -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.5rem);">Arquitectura del Sistema</h2>
+                <p class="section-subtitle" style="color: #A0A0B8; max-width: 500px;">
+                    Paneles nativos para cada rol operativo de tu negocio.
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Admin -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-laptop-code feature-icon-lg"></i>
+                    </div>
+                    <h3>Panel Administrativo</h3>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-circle" style="font-size:6px;"></i> Controles avanzados de precios y márgenes.</li>
+                        <li><i class="fas fa-circle" style="font-size:6px;"></i> Inventario inteligente con alertas predictivas de stock bajo y control de mermas.</li>
+                        <li><i class="fas fa-circle" style="font-size:6px;"></i> Métricas, KPIs de ventas y rendimiento en tiempo real.</li>
+                        <li><i class="fas fa-circle" style="font-size:6px;"></i> Protocolos de seguridad mediante control de permisos por usuario.</li>
+                    </ul>
+                </div>
+                <!-- Mesero -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-concierge-bell feature-icon-lg"></i>
+                    </div>
+                    <h3>Comandero Móvil</h3>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-circle" style="font-size:6px;"></i> Optimización de la experiencia en mesa mediante toma de pedidos sin fricción.</li>
+                        <li><i class="fas fa-circle" style="font-size:6px;"></i> Mapeo interactivo para el estado y rotación de mesas.</li>
+                        <li><i class="fas fa-circle" style="font-size:6px;"></i> Comunicación bidireccional y directa con la pantalla de cocina.</li>
+                        <li><i class="fas fa-circle" style="font-size:6px;"></i> Liquidación y corte de cuentas sin intervención manual.</li>
+                    </ul>
+                </div>
+                <!-- Cocina -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-fire-burner feature-icon-lg"></i>
+                    </div>
+                    <h3>Kitchen Display (KDS)</h3>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-circle" style="font-size:6px;"></i> Recepción instantánea de órdenes eliminando el error humano de las comandas físicas.</li>
+                        <li><i class="fas fa-circle" style="font-size:6px;"></i> Automatización del módulo "Preparar Receta" que sincroniza con el cardex de inventario.</li>
+                        <li><i class="fas fa-circle" style="font-size:6px;"></i> Trazabilidad de tiempos (preparación y entrega) para mejora continua.</li>
+                    </ul>
+                </div>
+                <!-- Cliente -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-qrcode feature-icon-lg"></i>
+                    </div>
+                    <h3>Portal de Clientes</h3>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-circle" style="font-size:6px;"></i> Interfaz de usuario inmersiva a través de escaneo QR.</li>
+                        <li><i class="fas fa-circle" style="font-size:6px;"></i> Self-service en mesa: permite al usuario generar órdenes sin depender de un mesero.</li>
+                        <li><i class="fas fa-circle" style="font-size:6px;"></i> Personalización intuitiva de adiciones, reduciendo tiempos muertos.</li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2: FLUJO DE TRABAJO -->
+    <section class="problem-section" style="padding-top: 2rem; background: #040406; border-top: 1px solid rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.02); position: relative;">
+        <!-- decorative bg -->
+        <div class="glowing-dots" style="top: 50%; left: 50%; animation-delay: 1s; width: 300px; height: 300px; opacity: 0.05; filter: blur(60px);"></div>
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.5rem);">Motor Operativo Inteligente</h2>
+                <p class="section-subtitle" style="color: #A0A0B8; max-width: 600px; margin: 0 auto;">
+                    Así es como el sistema elimina los cuellos de botella mediante flujos de trabajo sincronizados.
+                </p>
+            </div>
+
+            <div class="workflow-timeline">
+                <div class="workflow-step">
+                    <div class="step-num">01</div>
+                    <div class="step-content">
+                        <h3>Captura Sin Fricción</h3>
+                        <p>Los pedidos ingresan directo al sistema desde el dispositivo del mesero o el QR del cliente. Cero intermediarios y cero papel extraviado.</p>
+                    </div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-num">02</div>
+                    <div class="step-content">
+                        <h3>Sincronización KDS</h3>
+                        <p>Las comandas aparecen instantáneamente en la pantalla táctil de cocina clasificadas por antigüedad, priorizando automáticamente lo urgente.</p>
+                    </div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-num">03</div>
+                    <div class="step-content">
+                        <h3>Descuento de Inventario</h3>
+                        <p>Al pulsar "Preparar receta", el sistema descuenta mediante fórmulas las fracciones exactas de tu inventario global manteniendo el cardex perfecto.</p>
+                    </div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-num">04</div>
+                    <div class="step-content">
+                        <h3>Liquidación Ciega</h3>
+                        <p>La cuenta y adiciones se calculan de forma inmutable. Eliminamos por completo los descuadres matemáticos en la liquidación de la mesa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: SEGURIDAD Y ESCALABILIDAD -->
+    <section class="problem-section" style="padding-top: 6rem; background: #07070A;">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.5rem);">Escalabilidad y Seguridad</h2>
+                <p class="section-subtitle" style="color: #A0A0B8; max-width: 600px; margin: 0 auto;">
+                    Construido sobre estándares empresariales que te otorgan la verdadera propiedad de tus datos.
+                </p>
+            </div>
+
+            <div class="security-grid">
+                <div class="security-card">
+                    <i class="fas fa-database"></i>
+                    <div>
+                        <h4>0% Comisiones por Pedido</h4>
+                        <p>El sistema no cobra comisiones porcentuales parasitarias. Tu base de datos de clientes y métricas se mantienen 100% privadas y son tuyas.</p>
+                    </div>
+                </div>
+                <div class="security-card">
+                    <i class="fas fa-bell"></i>
+                    <div>
+                        <h4>Alertas Tempranas Automáticas</h4>
+                        <p>Motores internos monitorean silenciosamente vencimientos de ingredientes perecederos y mínimos de stock, previniendo quiebres indeseables.</p>
+                    </div>
+                </div>
+                <div class="security-card">
+                    <i class="fas fa-user-lock"></i>
+                    <div>
+                        <h4>Gobernanza de Módulos (Roles)</h4>
+                        <p>Jerarquía estricta. Un mesero no visualiza costos y un operario no audita la caja. Controlas granularmente quién accede a qué información.</p>
+                    </div>
+                </div>
+                <div class="security-card">
+                    <i class="fas fa-server"></i>
+                    <div>
+                        <h4>Infraestructura Franquiciable</h4>
+                        <p>Base de código limpia y base de datos relacional robusta lista para soportar altos volúmenes de concurrencia al expandir a múltiples sucursales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER CTA -->
+    <section class="cta-premium">
+        <div class="container">
+            <!-- Replacing .cta-card with .cta-card-centered to fix alignment -->
+            <div class="cta-card-centered">
+                <i class="fas fa-gem cta-icon-premium"></i>
+                <h2 class="cta-title">Desbloquea el Potencial de tu Operación</h2>
+                <p class="cta-description">
+                    Este sistema representa una reingeniería de tu operación gastronómica, diseñado meticulosamente para restaurantes que buscan crecer y franquiciar.
+                </p>
+                <div>
+                    <a href="https://wa.me/573112518913?text=Hola%20Samuel%2C%20estoy%20listo%20para%20profesionalizar%20la%20operaci%C3%B3n%20de%20mi%20restaurante%20con%20el%20Sistema%20Premium." 
+                       target="_blank" 
+                       class="btn-cta-premium">
+                        <i class="fab fa-whatsapp"></i>
+                        Agendar Implementación
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" style="background:#07070A; border-top: 1px solid rgba(255,255,255,0.03); padding-top: 2rem;">
+        <div class="container" style="text-align:center;">
+            <div class="footer-brand" style="justify-content: center; margin-bottom: 0;">
+                <span class="logo-icon">🍔</span>
+                <span class="footer-brand-text" style="color: #EDEDF5;">Samuel Portilla</span>
+            </div>
+            <p style="margin-top: 10px; color: rgba(255,255,255,0.4); font-size: 0.8rem;">© 2026 Samuel Portilla. Soluciones digitales para restaurantes en Cúcuta, Colombia.</p>
+        </div>
+    </footer>
+</body>
+</html>
