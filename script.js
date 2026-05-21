@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const elements = [
             ...document.querySelectorAll('.section-header'),
             ...document.querySelectorAll('.comparison-card'),
+            ...document.querySelectorAll('.testimonial-card'),
             ...document.querySelectorAll('.portfolio-card'),
             ...document.querySelectorAll('.step-card'),
             ...document.querySelectorAll('.impact-stats'),
