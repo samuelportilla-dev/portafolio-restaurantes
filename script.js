@@ -261,4 +261,91 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // ============================================
+    // LOGO CAROUSEL INTERACTIVO & TESTIMONIOS HIGHLIGHT
+    // ============================================
+    const carouselItems = document.querySelectorAll('.logo-carousel-item');
+    const prevBtn = document.querySelector('.carousel-control.prev');
+    const nextBtn = document.querySelector('.carousel-control.next');
+
+    if (carouselItems.length > 0) {
+        let currentIndex = 0;
+
+        const updateCarousel = (newIndex) => {
+            currentIndex = (newIndex + carouselItems.length) % carouselItems.length;
+
+            carouselItems.forEach((item, index) => {
+                item.className = 'logo-carousel-item'; // Reset classes
+                
+                if (index === currentIndex) {
+                    item.classList.add('active');
+                } else if (index === (currentIndex - 1 + carouselItems.length) % carouselItems.length) {
+                    item.classList.add('prev');
+                } else if (index === (currentIndex + 1) % carouselItems.length) {
+                    item.classList.add('next');
+                }
+            });
+            
+            // Highlight the corresponding testimonial card below dynamically!
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+            if (testimonialCards.length > 0) {
+                testimonialCards.forEach((card, idx) => {
+                    if (idx === currentIndex) {
+                        card.classList.add('featured-highlight');
+                        card.style.borderColor = 'var(--color-primary)';
+                        card.style.transform = 'translateY(-6px)';
+                        card.style.boxShadow = '0 15px 35px rgba(232, 93, 42, 0.15)';
+                    } else {
+                        card.classList.remove('featured-highlight');
+                        card.style.borderColor = 'var(--color-border)';
+                        card.style.transform = 'translateY(0)';
+                        card.style.boxShadow = 'none';
+                    }
+                });
+            }
+        };
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                updateCarousel(currentIndex - 1);
+                resetInterval();
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                updateCarousel(currentIndex + 1);
+                resetInterval();
+            });
+        }
+        
+        // Allow clicking directly on prev/next items or active item to navigate
+        carouselItems.forEach((item, index) => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                updateCarousel(index);
+                resetInterval();
+            });
+        });
+
+        // Auto rotate
+        let autoRotate = setInterval(() => {
+            updateCarousel(currentIndex + 1);
+        }, 4000);
+
+        const resetInterval = () => {
+            clearInterval(autoRotate);
+            autoRotate = setInterval(() => {
+                updateCarousel(currentIndex + 1);
+            }, 4000);
+        };
+        
+        // Initial state load
+        setTimeout(() => {
+            updateCarousel(0);
+        }, 300);
+    }
 });
