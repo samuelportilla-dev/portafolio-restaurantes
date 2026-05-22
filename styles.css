@@ -1862,7 +1862,7 @@ ul { list-style: none; }
     justify-content: center;
     gap: var(--space-xl);
     position: relative;
-    max-width: 600px;
+    max-width: 750px;
     margin: 0 auto var(--space-2xl) auto;
     padding: var(--space-sm) 0;
 }
@@ -1872,7 +1872,7 @@ ul { list-style: none; }
     align-items: center;
     justify-content: center;
     position: relative;
-    height: 160px;
+    height: 220px;
     width: 100%;
 }
 
@@ -1910,7 +1910,7 @@ ul { list-style: none; }
     opacity: 0.5;
     pointer-events: auto;
     z-index: 2;
-    transform: scale(0.85) translateX(-180px);
+    transform: scale(0.8) translateX(-210px);
     filter: grayscale(100%) blur(1px);
 }
 
@@ -1918,16 +1918,16 @@ ul { list-style: none; }
     opacity: 0.5;
     pointer-events: auto;
     z-index: 2;
-    transform: scale(0.85) translateX(180px);
+    transform: scale(0.8) translateX(210px);
     filter: grayscale(100%) blur(1px);
 }
 
 .logo-carousel-item img {
-    height: 90px;
-    width: 90px;
+    height: 125px;
+    width: 125px;
     object-fit: contain;
     background: var(--color-bg-card);
-    border: 2px solid var(--color-border);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     padding: var(--space-sm);
     transition: var(--transition-smooth);
@@ -2037,7 +2037,7 @@ ul { list-style: none; }
     height: 48px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--color-primary);
+    border: 1px solid var(--color-primary);
     box-shadow: var(--shadow-sm);
 }
 
@@ -2171,5 +2171,28 @@ ul { list-style: none; }
     }
     .logo-track {
         gap: var(--space-xl);
+    }
+    
+    /* Responsive Logo Carousel adjustments */
+    .logo-carousel-container {
+        max-width: 100%;
+        gap: var(--space-sm);
+    }
+    .logo-carousel {
+        height: 170px;
+    }
+    .logo-carousel-item img {
+        height: 90px;
+        width: 90px;
+        padding: var(--space-xs);
+    }
+    .logo-carousel-item.prev {
+        transform: scale(0.8) translateX(-110px);
+    }
+    .logo-carousel-item.next {
+        transform: scale(0.8) translateX(110px);
+    }
+    .logo-carousel-item.active {
+        transform: scale(1.15) translateX(0);
     }
 }
