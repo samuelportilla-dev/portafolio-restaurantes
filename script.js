@@ -1,5 +1,5 @@
 /**
- * Samuel Portilla — Portafolio de Soluciones Digitales para Restaurantes
+ * Symax — Portafolio de Soluciones Digitales para Restaurantes
  * Script principal: Navegación, animaciones scroll-reveal, y micro-interacciones
  */
 

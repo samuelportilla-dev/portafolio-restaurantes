@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Centro de Soporte | Symax</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/icono.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        body {
+            background-color: #07070A; /* Deeper, richer black */
+            color: #EDEDF5;
+        }
+
+        .navbar {
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            background: rgba(7, 7, 10, 0.8) !important;
+            backdrop-filter: blur(24px) !important;
+            -webkit-backdrop-filter: blur(24px) !important;
+        }
+
+        .support-hero {
+            padding-top: 180px;
+            padding-bottom: 60px;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(232, 93, 42, 0.12) 0%, #07070A 60%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .support-hero::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw;
+            height: 80vw;
+            background: radial-gradient(circle, rgba(232, 93, 42, 0.04) 0%, transparent 60%);
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .support-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDMpIi8+Cjwvc3ZnPg==') repeat;
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* SEARCH BAR MOCK */
+        .search-container {
+            max-width: 600px;
+            margin: 2rem auto 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 16px 24px 16px 54px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 100px;
+            color: #FFFFFF;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .search-box:focus {
+            border-color: rgba(232, 93, 42, 0.5);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 10px 30px rgba(232, 93, 42, 0.08);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+            pointer-events: none;
+        }
+
+        /* ACCORDION/GUIDES SECTION */
+        .guides-section {
+            padding-bottom: 6rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .guides-container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .guide-accordion {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(15px);
+        }
+
+        .guide-accordion:hover {
+            border-color: rgba(232, 93, 42, 0.2);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .guide-header {
+            padding: 1.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .guide-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .guide-number {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.15);
+            line-height: 1;
+        }
+
+        .guide-accordion:hover .guide-number {
+            -webkit-text-stroke: 1px #E85D2A;
+            color: rgba(232, 93, 42, 0.1);
+        }
+
+        .guide-title {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+
+        .guide-icon {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            transition: transform 0.3s ease;
+        }
+
+        .guide-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .guide-accordion.active .guide-content {
+            max-height: 2000px; /* arbitrary large value for expansion */
+        }
+
+        .guide-accordion.active .guide-icon {
+            transform: rotate(180deg);
+            color: var(--color-primary-light);
+        }
+
+        .guide-accordion.active {
+            border-color: rgba(232, 93, 42, 0.3);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .guide-body {
+            padding: 0 2rem 2.25rem 4rem;
+            font-family: var(--font-body);
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            border-top: 1px solid rgba(255,255,255,0.03);
+            padding-top: 1.5rem;
+        }
+
+        .guide-body h4 {
+            font-family: var(--font-heading);
+            color: #FFFFFF;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .guide-body h4:first-of-type {
+            margin-top: 0;
+        }
+
+        .guide-body p {
+            margin-bottom: 1rem;
+        }
+
+        .guide-body ol, .guide-body ul {
+            margin-bottom: 1rem;
+            padding-left: 1.25rem;
+        }
+
+        .guide-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        .guide-body code {
+            background: rgba(255,255,255,0.05);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: var(--color-primary-light);
+            font-size: 0.9em;
+        }
+
+        /* SUPPORT TICKET BOX */
+        .support-ticket-card {
+            background: linear-gradient(145deg, rgba(232, 93, 42, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(232, 93, 42, 0.15);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .support-ticket-card::before {
+            content: '';
+            position: absolute;
+            bottom: -50px; left: 50%;
+            transform: translateX(-50%);
+            width: 200px; height: 80px;
+            background: #E85D2A;
+            filter: blur(100px);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .support-ticket-title {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 0.75rem;
+        }
+
+        .support-ticket-desc {
+            font-family: var(--font-body);
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+            max-width: 550px;
+            margin: 0 auto 2rem auto;
+            line-height: 1.6;
+        }
+
+        .btn-support {
+            background: var(--gradient-cta);
+            color: white;
+            padding: 16px 36px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 100px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 10px 20px rgba(232, 93, 42, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-support:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(232, 93, 42, 0.45);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logo.png" alt="Symax Logo" class="logo-img">
+                <span class="logo-text">Sy<span class="logo-accent">max</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li>
+                    <a href="index.html" class="btn-outline" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; color: #EDEDF5; padding: 10px 24px; font-size: 0.85rem;">
+                        <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Volver al Inicio
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="support-hero">
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="hero-badge-premium" style="display:inline-flex; align-items:center; gap:10px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); color:#E85D2A; padding:8px 20px; border-radius:100px; font-size:0.8rem; font-weight:600; margin-bottom:var(--space-xl); letter-spacing:0.1em; text-transform:uppercase;">
+                <span style="width:6px; height:6px; border-radius:50%; background:#E85D2A; display:inline-block; box-shadow:0 0 10px #E85D2A;"></span> 
+                Centro de Documentación
+            </div>
+            <h1 class="hero-title" style="font-size:clamp(2.2rem, 5vw, 3.8rem); font-weight:800; letter-spacing:-0.02em; color:#FFFFFF; margin-bottom:var(--space-md);">¿Cómo podemos <span class="hero-highlight">ayudarte?</span></h1>
+            <p class="hero-subtitle" style="color:#A0A0B8; max-width:600px; margin:0 auto; line-height:1.6;">
+                Encuentra guías técnicas paso a paso diseñadas para que autogestiones el menú digital de tu local con facilidad y profesionalismo.
+            </p>
+            
+            <!-- Search Bar Mock -->
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-box" id="searchBox" placeholder="Escribe tu duda (ej: impresoras, apagar plato...)">
+            </div>
+        </div>
+    </section>
+
+    <!-- ACCORDION GUIDES SECTION -->
+    <section class="guides-section">
+        <div class="container guides-container">
+            
+            <div class="guides-list" id="guidesList">
+                
+                <!-- GUIA 1: Impresoras -->
+                <div class="guide-accordion" data-search="impresora termica bluetooth red lan comandas ticket usb esc pos">
+                    <div class="guide-header">
+                        <div class="guide-title-wrap">
+                            <span class="guide-number">01</span>
+                            <h3 class="guide-title">Cómo configurar tus impresoras térmicas</h3>
+                        </div>
+                        <i class="fas fa-chevron-down guide-icon"></i>
+                    </div>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <h4>Protocolo de Impresión ESC/POS</h4>
+                            <p>Symax es compatible de manera nativa con impresoras térmicas que admitan comandos estándar <code>ESC/POS</code>. Soportamos rollos estándar de <strong>80mm</strong> (recomendado para cocina) y <strong>58mm</strong> (mesas/cuentas).</p>
+                            
+                            <h4>Paso 1: Conexión mediante Bluetooth (Dispositivos Móviles)</h4>
+                            <ol>
+                                <li>Enciende la impresora térmica.</li>
+                                <li>Ve a los ajustes de Bluetooth de tu tablet o celular y busca dispositivos nuevos.</li>
+                                <li>Selecciona el nombre de tu impresora (usualmente aparece como <code>InnerPrinter</code>, <code>MTP-II</code> o <code>POS-58/80</code>).</li>
+                                <li>Ingresa el PIN de emparejamiento por defecto (generalmente es <code>0000</code> o <code>1234</code>).</li>
+                            </ol>
+
+                            <h4>Paso 2: Conexión mediante Red LAN o Wi-Fi (Recomendado para Cocina)</h4>
+                            <ol>
+                                <li>Conecta la impresora térmica a tu router local mediante un cable Ethernet RJ45.</li>
+                                <li>Imprime una hoja de prueba (Autodiagnóstico) manteniendo pulsado el botón "Feed" mientras enciendes la impresora. Esta hoja mostrará la dirección IP asignada (Ej: <code>192.168.1.100</code>).</li>
+                                <li>Asegúrate de que tus terminales o comandero de meseros estén conectados a la misma red Wi-Fi del router de las impresoras.</li>
+                            </ol>
+
+                            <h4>Paso 3: Vinculación en el Panel de Symax KDS</h4>
+                            <ol>
+                                <li>Inicia sesión en tu comandero o KDS de cocina de Symax.</li>
+                                <li>Dirígete a <code>Ajustes de Impresión</code> en el panel lateral.</li>
+                                <li>Haz clic en <code>Añadir Impresora</code>.</li>
+                                <li>Asigna un nombre (Ej: "Impresora de Cocina") y selecciona el tipo de conexión (<strong>Bluetooth</strong> o <strong>IP de Red</strong>).</li>
+                                <li>Escribe la IP configurada o selecciona el dispositivo Bluetooth emparejado y haz clic en <code>Imprimir Ticket de Prueba</code>.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GUIA 2: Activar/Desactivar Platos -->
+                <div class="guide-accordion" data-search="activar desactivar platos celular menu digital apagar productos disponibilidad stock sin stock">
+                    <div class="guide-header">
+                        <div class="guide-title-wrap">
+                            <span class="guide-number">02</span>
+                            <h3 class="guide-title">Cómo activar/desactivar platos desde tu celular</h3>
+                        </div>
+                        <i class="fas fa-chevron-down guide-icon"></i>
+                    </div>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <h4>Control de Stock y Disponibilidad en 10 Segundos</h4>
+                            <p>Evita reclamos y malas experiencias con tus comensales desactivando al instante aquellos productos o ingredientes que se hayan agotado a mitad de la jornada laboral.</p>
+                            
+                            <h4>Guía Paso a Paso:</h4>
+                            <ol>
+                                <li>Abre el navegador web de tu celular e ingresa al enlace administrativo único que te asignamos (Ej: <code>tu-restaurante-admin.symax.tech</code>).</li>
+                                <li>Inicia sesión con tus credenciales de Administrador o Cajero.</li>
+                                <li>En el panel principal, haz clic en la pestaña <code>Productos</code> o en el icono de menú de hamburguesa y selecciona <code>Mi Menú</code>.</li>
+                                <li>Utiliza la barra de búsqueda rápida o navega por las categorías (Ej: <em>Bebidas</em>, <em>Hamburguesas</em>) para ubicar el producto que deseas modificar.</li>
+                                <li>Verás un interruptor deslizante de color verde que dice <strong>"Disponible"</strong> al lado de cada producto.</li>
+                                <li><strong>Para Desactivarlo:</strong> Toca el interruptor. Cambiará a color gris y el texto cambiará a <strong>"Agotado"</strong>. El producto se ocultará automáticamente en tiempo real del menú digital que ven tus comensales.</li>
+                                <li><strong>Para Volver a Activarlo:</strong> Cuando vuelvas a tener stock, simplemente toca el interruptor de nuevo para que regrese a verde. El plato volverá a estar disponible para pedidos al instante.</li>
+                            </ol>
+                            
+                            <p><em>Nota: Si tienes adiciones o ingredientes específicos vinculados a varios platos (ej. "Tocineta Extra"), también puedes ir a la sección de <code>Adiciones</code> y apagar la adición de forma global.</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GUIA 3: Optimizacion de fotos -->
+                <div class="guide-accordion" data-search="optimizacion fotos imagenes menu digital velocidad comprimir webp png jpeg peso squoosh tinypng">
+                    <div class="guide-header">
+                        <div class="guide-title-wrap">
+                            <span class="guide-number">03</span>
+                            <h3 class="guide-title">Optimización de fotos para el menú digital</h3>
+                        </div>
+                        <i class="fas fa-chevron-down guide-icon"></i>
+                    </div>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <h4>¿Por qué es importante optimizar las imágenes?</h4>
+                            <p>Un menú digital con fotos pesadas tarda mucho tiempo en cargar cuando el cliente escanea el QR en zonas de baja cobertura de datos. Optimizar tus fotos garantiza que el menú se despliegue en menos de 1 segundo, reduciendo la tasa de abandono y mejorando la experiencia de compra.</p>
+                            
+                            <h4>1. Relación de Aspecto y Dimensiones Óptimas</h4>
+                            <ul>
+                                <li><strong>Formato Cuadrado (1:1):</strong> Recomendamos recortar todas las imágenes en una relación cuadrada exacta de <code>800 x 800 píxeles</code>. Esto asegura consistencia visual en todas las tarjetas de la carta.</li>
+                                <li><strong>Resolución:</strong> No utilices imágenes directamente de la cámara en su resolución original (que suelen ser mayores a 4000px). La resolución de pantalla de un celular no requiere tanto tamaño y solo genera peso innecesario.</li>
+                            </ul>
+
+                            <h4>2. Formato de Archivo Recomendado: WebP</h4>
+                            <p>WebP es el formato de imagen web moderno desarrollado por Google. Permite una compresión superior (pesa hasta un 80% menos que un JPG o PNG) manteniendo una calidad visual idéntica. Todos nuestros menús de Symax están optimizados para servir imágenes en WebP.</p>
+
+                            <h4>3. Herramientas Gratuitas de Compresión</h4>
+                            <ul>
+                                <li><strong>Squoosh.app:</strong> Herramienta gratuita online de Google. Sube tu foto JPG, recórtala, selecciona exportar como <code>WebP</code> con una calidad del <code>75%</code> y descárgala. El archivo resultante pesará apenas unos 40KB a 70KB.</li>
+                                <li><strong>TinyPNG / TinyJPG:</strong> Compresor inteligente para procesar múltiples imágenes por lotes antes de subirlas a la base de datos de tu menú.</li>
+                            </ul>
+
+                            <h4>4. Tips de Fotografía Gastronómica Básica</h4>
+                            <ul>
+                                <li><strong>Usa luz natural:</strong> Toma las fotos cerca de una ventana durante el día. Evita usar el flash directo del celular, ya que genera reflejos desagradables en salsas o platos húmedos.</li>
+                                <li><strong>Ángulo Cenital (desde arriba) o 45 grados:</strong> Son los ángulos más atractivos para mostrar hamburguesas, pizzas, ensaladas y bebidas en interfaces digitales.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- SUPPORT TICKET BOX -->
+            <div class="support-ticket-card">
+                <i class="fab fa-whatsapp" style="font-size: 3rem; color: #25D366; margin-bottom: 1.5rem; display: inline-block;"></i>
+                <h3 class="support-ticket-title">¿Aún necesitas ayuda personalizada?</h3>
+                <p class="support-ticket-desc">
+                    El soporte postventa humano es nuestro pilar fundamental. Si tienes dificultades con alguna configuración o necesitas ayuda para registrar tu menú, chatea directamente con nuestro equipo técnico en Colombia.
+                </p>
+                <a href="https://wa.me/573133646672?text=Hola%20Symax%2C%20necesito%20soporte%20t%C3%A9cnico%20con%20la%20configuraci%C3%B3n%20de%20mi%20restaurante" target="_blank" class="btn-support">
+                    <i class="fab fa-whatsapp"></i> Chatear con Soporte Técnico
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" style="background:#07070A; border-top: 1px solid rgba(255,255,255,0.03); padding-top: 2rem; padding-bottom: 2rem;">
+        <div class="container" style="text-align:center;">
+            <div class="footer-brand" style="justify-content: center; margin-bottom: 1rem;">
+                <img src="assets/logo.png" alt="Symax Logo" class="logo-img">
+                <span class="footer-brand-text" style="color: #EDEDF5;">Symax</span>
+            </div>
+            <div class="footer-links" style="justify-content: center; gap: 2rem; margin-bottom: 1rem;">
+                <a href="index.html" style="font-size: 0.8rem; color: var(--color-text-secondary);">Inicio</a>
+                <a href="integraciones.html" style="font-size: 0.8rem; color: var(--color-text-secondary);">Integraciones</a>
+                <a href="legal/terminos.html" style="font-size: 0.8rem; color: var(--color-text-secondary);">Términos</a>
+                <a href="legal/privacidad.html" style="font-size: 0.8rem; color: var(--color-text-secondary);">Privacidad</a>
+            </div>
+            <p style="margin-top: 10px; color: rgba(255,255,255,0.4); font-size: 0.8rem;">© 2026 Symax. Soluciones digitales para restaurantes en Colombia.</p>
+        </div>
+    </footer>
+
+    <!-- Accordion functionality & search filtering -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Accordion toggle
+            const accordions = document.querySelectorAll('.guide-accordion');
+            
+            accordions.forEach(acc => {
+                const header = acc.querySelector('.guide-header');
+                header.addEventListener('click', () => {
+                    // Toggle active class on this accordion
+                    const isActive = acc.classList.contains('active');
+                    
+                    // Close all others (optional but recommended)
+                    accordions.forEach(item => item.classList.remove('active'));
+                    
+                    if (!isActive) {
+                        acc.classList.add('active');
+                    }
+                });
+            });
+
+            // Search filtering
+            const searchBox = document.getElementById('searchBox');
+            searchBox.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+
+                accordions.forEach(acc => {
+                    const searchData = acc.dataset.search.toLowerCase();
+                    const title = acc.querySelector('.guide-title').textContent.toLowerCase();
+                    
+                    if (searchData.includes(query) || title.includes(query)) {
+                        acc.style.display = 'block';
+                    } else {
+                        acc.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

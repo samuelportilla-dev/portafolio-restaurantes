@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Centro de Integraciones | Symax</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/icono.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        body {
+            background-color: #07070A; /* Deeper, richer black */
+            color: #EDEDF5;
+        }
+
+        .navbar {
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            background: rgba(7, 7, 10, 0.8) !important;
+            backdrop-filter: blur(24px) !important;
+            -webkit-backdrop-filter: blur(24px) !important;
+        }
+
+        .integrations-hero {
+            padding-top: 180px;
+            padding-bottom: 80px;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(232, 93, 42, 0.12) 0%, #07070A 60%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .integrations-hero::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw;
+            height: 80vw;
+            background: radial-gradient(circle, rgba(232, 93, 42, 0.04) 0%, transparent 60%);
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .integrations-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDMpIi8+Cjwvc3ZnPg==') repeat;
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* TABS FILTER */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--color-text-secondary);
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: rgba(232, 93, 42, 0.1);
+            border-color: rgba(232, 93, 42, 0.4);
+            color: #FFFFFF;
+        }
+
+        /* GRID */
+        .grid-section {
+            padding-bottom: 6rem;
+        }
+
+        .integrations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .integration-card {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 24px;
+            padding: 2.25rem 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+        }
+
+        .integration-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left, rgba(232, 93, 42, 0.12), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .integration-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(232, 93, 42, 0.25);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(232, 93, 42, 0.03);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .integration-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-top {
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-header-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .integration-icon {
+            width: 54px;
+            height: 54px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #E85D2A;
+            transition: all 0.3s ease;
+        }
+
+        .integration-card:hover .integration-icon {
+            background: rgba(232, 93, 42, 0.1);
+            border-color: rgba(232, 93, 42, 0.3);
+            transform: scale(1.05);
+        }
+
+        .status-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 100px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .status-active {
+            background: rgba(34, 197, 94, 0.1);
+            color: #4ADE80;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .status-soon {
+            background: rgba(255, 159, 67, 0.1);
+            color: #FFB800;
+            border: 1px solid rgba(255, 159, 67, 0.2);
+        }
+
+        .status-api {
+            background: rgba(59, 130, 246, 0.1);
+            color: #60A5FA;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .integration-title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 0.75rem;
+        }
+
+        .integration-desc {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-bottom {
+            position: relative;
+            z-index: 2;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            padding-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .integration-category {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .integration-action-link {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-primary-light);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .integration-action-link:hover {
+            color: var(--color-primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logo.png" alt="Symax Logo" class="logo-img">
+                <span class="logo-text">Sy<span class="logo-accent">max</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li>
+                    <a href="index.html" class="btn-outline" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; color: #EDEDF5; padding: 10px 24px; font-size: 0.85rem;">
+                        <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Volver al Inicio
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="integrations-hero">
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="hero-badge-premium" style="display:inline-flex; align-items:center; gap:10px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); color:#E85D2A; padding:8px 20px; border-radius:100px; font-size:0.8rem; font-weight:600; margin-bottom:var(--space-xl); letter-spacing:0.1em; text-transform:uppercase;">
+                <span style="width:6px; height:6px; border-radius:50%; background:#E85D2A; display:inline-block; box-shadow:0 0 10px #E85D2A;"></span> 
+                Ecosistema de Software
+            </div>
+            <h1 class="hero-title" style="font-size:clamp(2.2rem, 5vw, 3.8rem); font-weight:800; letter-spacing:-0.02em; color:#FFFFFF; margin-bottom:var(--space-md);">Centro de <span class="hero-highlight">Integraciones</span></h1>
+            <p class="hero-subtitle" style="color:#A0A0B8; max-width:600px; margin:0 auto var(--space-xl); line-height:1.6;">
+                Conecta Symax con las herramientas líderes de la industria gastronómica. Automatiza cobros, simplifica tu contabilidad fiscal ante la DIAN y optimiza tus despachos.
+            </p>
+        </div>
+    </section>
+
+    <!-- INTEGRATIONS GRID SECTION -->
+    <section class="grid-section">
+        <div class="container">
+            
+            <!-- Filters -->
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">Todas</button>
+                <button class="filter-btn" data-filter="pagos">Pasarelas de Pago</button>
+                <button class="filter-btn" data-filter="fiscal">Facturación y POS</button>
+                <button class="filter-btn" data-filter="hardware">Hardware e Impresión</button>
+                <button class="filter-btn" data-filter="marketing">Marketing y API</button>
+            </div>
+
+            <!-- Grid -->
+            <div class="integrations-grid">
+                
+                <!-- Wompi -->
+                <div class="integration-card" data-category="pagos">
+                    <div class="card-top">
+                        <div class="card-header-meta">
+                            <div class="integration-icon"><i class="fas fa-credit-card"></i></div>
+                            <span class="status-badge status-active">Disponible</span>
+                        </div>
+                        <h3 class="integration-title">Wompi (Bancolombia)</h3>
+                        <p class="integration-desc">Permite a tus clientes pagar directamente desde el menú digital usando cuentas de ahorros Bancolombia, Nequi, PSE o tarjetas de crédito con total seguridad.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <span class="integration-category">Pagos</span>
+                        <a href="https://wa.me/573133646672?text=Hola%20Symax%2C%20quiero%20integrar%20Wompi%20en%20mi%20men%C3%BA" target="_blank" class="integration-action-link">Solicitar <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Bold -->
+                <div class="integration-card" data-category="pagos">
+                    <div class="card-top">
+                        <div class="card-header-meta">
+                            <div class="integration-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <span class="status-badge status-active">Disponible</span>
+                        </div>
+                        <h3 class="integration-title">Bold Link</h3>
+                        <p class="integration-desc">Genera links de pago automáticos integrados en el flujo de WhatsApp de tu restaurante. Cero fricción para compras no presenciales y envíos a domicilio.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <span class="integration-category">Pagos</span>
+                        <a href="https://wa.me/573133646672?text=Hola%20Symax%2C%20quiero%20integrar%20Bold%20en%20mi%20men%C3%BA" target="_blank" class="integration-action-link">Solicitar <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Mercado Pago -->
+                <div class="integration-card" data-category="pagos">
+                    <div class="card-top">
+                        <div class="card-header-meta">
+                            <div class="integration-icon"><i class="fas fa-wallet"></i></div>
+                            <span class="status-badge status-active">Disponible</span>
+                        </div>
+                        <h3 class="integration-title">Mercado Pago</h3>
+                        <p class="integration-desc">Checkout transparente de Mercado Pago para procesar de forma nativa tarjetas nacionales y pagos directos desde la billetera digital.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <span class="integration-category">Pagos</span>
+                        <a href="https://wa.me/573133646672?text=Hola%20Symax%2C%20quiero%20integrar%20Mercado%20Pago%20en%20mi%20men%C3%BA" target="_blank" class="integration-action-link">Solicitar <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- DIAN -->
+                <div class="integration-card" data-category="fiscal">
+                    <div class="card-top">
+                        <div class="card-header-meta">
+                            <div class="integration-icon"><i class="fas fa-file-invoice"></i></div>
+                            <span class="status-badge status-api">API Conector</span>
+                        </div>
+                        <h3 class="integration-title">Facturación Electrónica DIAN</h3>
+                        <p class="integration-desc">Conexión directa con proveedores tecnológicos autorizados por la DIAN en Colombia. Generación automática del XML y representación gráfica del tiquete POS electrónico.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <span class="integration-category">Fiscal</span>
+                        <a href="https://wa.me/573133646672?text=Hola%20Symax%2C%20me%20interesa%20la%20integraci%C3%B3n%20con%20la%20DIAN%20para%20facturas%20electr%C3%B3nicas" target="_blank" class="integration-action-link">Ver Más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- POS local -->
+                <div class="integration-card" data-category="fiscal">
+                    <div class="card-top">
+                        <div class="card-header-meta">
+                            <div class="integration-icon"><i class="fas fa-cash-register"></i></div>
+                            <span class="status-badge status-active">Disponible</span>
+                        </div>
+                        <h3 class="integration-title">Sistemas POS Locales</h3>
+                        <p class="integration-desc">Sincroniza el inventario y stock de tu sistema de punto de venta físico local directamente con tu menú digital en línea para evitar la venta de platos sin stock.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <span class="integration-category">POS</span>
+                        <a href="https://wa.me/573133646672?text=Hola%20Symax%2C%20quiero%20conectar%20mi%20sistema%20POS%20actual%20con%20el%20men%C3%BA" target="_blank" class="integration-action-link">Consultar <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Impresoras térmicas -->
+                <div class="integration-card" data-category="hardware">
+                    <div class="card-top">
+                        <div class="card-header-meta">
+                            <div class="integration-icon"><i class="fas fa-print"></i></div>
+                            <span class="status-badge status-active">Disponible</span>
+                        </div>
+                        <h3 class="integration-title">Impresión Térmica 80mm/58mm</h3>
+                        <p class="integration-desc">Conexión con comandas físicas mediante impresoras térmicas ESC/POS vía Bluetooth, red LAN o USB. Impresión inmediata de tickets de despacho en cocina al recibir el pedido.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <span class="integration-category">Hardware</span>
+                        <a href="https://wa.me/573133646672?text=Hola%20Symax%2C%20quiero%20saber%20c%C3%B3mo%20conectar%20mis%20impresoras%20térmicas" target="_blank" class="integration-action-link">Soporte <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- WhatsApp Cloud API -->
+                <div class="integration-card" data-category="marketing">
+                    <div class="card-top">
+                        <div class="card-header-meta">
+                            <div class="integration-icon"><i class="fab fa-whatsapp"></i></div>
+                            <span class="status-badge status-api">API Conector</span>
+                        </div>
+                        <h3 class="integration-title">WhatsApp Cloud API (Meta)</h3>
+                        <p class="integration-desc">Integración directa con el API oficial en la nube de Meta. Envía notificaciones de estado automáticas del pedido (Ej: "Tu pedido está en camino") sin depender de un celular físico.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <span class="integration-category">Marketing</span>
+                        <a href="https://wa.me/573133646672?text=Hola%20Symax%2C%20quiero%20usar%20la%20API%20oficial%20de%20WhatsApp%20Cloud" target="_blank" class="integration-action-link">Cotizar <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Facebook Pixel -->
+                <div class="integration-card" data-category="marketing">
+                    <div class="card-top">
+                        <div class="card-header-meta">
+                            <div class="integration-icon"><i class="fas fa-chart-line"></i></div>
+                            <span class="status-badge status-active">Disponible</span>
+                        </div>
+                        <h3 class="integration-title">Píxel de Meta & Google Ads</h3>
+                        <p class="integration-desc">Instalación del píxel de seguimiento en tu menú QR. Mide conversiones de anuncios, comportamiento de los usuarios en la carta digital y optimiza tus campañas de publicidad.</p>
+                    </div>
+                    <div class="card-bottom">
+                        <span class="integration-category">Marketing</span>
+                        <a href="https://wa.me/573133646672?text=Hola%20Symax%2C%20quiero%20configurar%20el%20Pixel%20de%20Meta%20en%20mi%20carta" target="_blank" class="integration-action-link">Solicitar <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" style="background:#07070A; border-top: 1px solid rgba(255,255,255,0.03); padding-top: 2rem; padding-bottom: 2rem;">
+        <div class="container" style="text-align:center;">
+            <div class="footer-brand" style="justify-content: center; margin-bottom: 1rem;">
+                <img src="assets/logo.png" alt="Symax Logo" class="logo-img">
+                <span class="footer-brand-text" style="color: #EDEDF5;">Symax</span>
+            </div>
+            <div class="footer-links" style="justify-content: center; gap: 2rem; margin-bottom: 1rem;">
+                <a href="index.html" style="font-size: 0.8rem; color: var(--color-text-secondary);">Inicio</a>
+                <a href="integraciones.html" style="font-size: 0.8rem; color: var(--color-text-secondary);">Integraciones</a>
+                <a href="soporte.html" style="font-size: 0.8rem; color: var(--color-text-secondary);">Soporte</a>
+                <a href="legal/terminos.html" style="font-size: 0.8rem; color: var(--color-text-secondary);">Términos</a>
+                <a href="legal/privacidad.html" style="font-size: 0.8rem; color: var(--color-text-secondary);">Privacidad</a>
+            </div>
+            <p style="margin-top: 10px; color: rgba(255,255,255,0.4); font-size: 0.8rem;">© 2026 Symax. Soluciones digitales para restaurantes en Colombia.</p>
+        </div>
+    </footer>
+
+    <!-- JS script for tab filters -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.integration-card');
+
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active from all
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filterValue = btn.dataset.filter;
+
+                    cards.forEach(card => {
+                        if (filterValue === 'all') {
+                            card.style.display = 'flex';
+                        } else {
+                            if (card.dataset.category === filterValue) {
+                                card.style.display = 'flex';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

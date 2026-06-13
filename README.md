@@ -1,6 +1,6 @@
-# Portafolio de Samuel Andrés Portilla Ardila
+# Symax - Sistemas de Pedidos para Restaurantes
 
-Un portafolio web moderno y responsive que muestra mis proyectos, habilidades y experiencia como desarrollador.
+Un portafolio web moderno y responsive que muestra las soluciones digitales de Symax para restaurantes.
 
 ## 🚀 Características
 
@@ -76,10 +76,9 @@ El portafolio está optimizado para:
 
 ## 📧 Contacto
 
-- **Email**: samuelportilla.office@gmail.com
-- **LinkedIn**: [Samuel Andrés Portilla Ardila](https://www.linkedin.com/in/samuel-andrés-portilla-ardila-937ab8381)
-- **GitHub**: [samuelportilla-dev](https://github.com/samuelportilla-dev)
-- **Ubicación**: Cúcuta, Colombia
+- **Email**: contacto@symax.tech
+- **Teléfono**: +57 313 3646672
+- **Ubicación**: Colombia
 
 ## 🎯 Objetivos
 
@@ -111,4 +110,4 @@ Juego educativo en Roblox para aprender tablas de multiplicar con sistema de con
 
 ---
 
-*Desarrollado con ❤️ por Samuel Andrés Portilla Ardila*
+*Desarrollado con ❤️ por Symax*

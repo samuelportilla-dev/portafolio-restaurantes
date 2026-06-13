@@ -61,8 +61,8 @@ function sendEmailViaAPI($apiKey, $fromEmail, $fromName, $toEmail, $subject, $bo
     $headers = [
         'Authorization: Bearer ' . $apiKey,
         'Content-Type: application/json',
-        'User-Agent: SamuelPortilla-Portfolio/1.0',
-        'X-Mailer: Samuel Portilla Portfolio System'
+        'User-Agent: Symax-Portfolio/1.0',
+        'X-Mailer: Symax Portfolio System'
     ];
     
     $ch = curl_init();
@@ -150,13 +150,13 @@ try {
 
     // PREPARAR CONTENIDO DEL EMAIL
     $emailSubject = "Nuevo mensaje desde portafolio: " . $subject;
-    $emailBody = "Nuevo mensaje desde el portafolio de Samuel Portilla:\n\n";
+    $emailBody = "Nuevo mensaje desde el portafolio de Symax:\n\n";
     $emailBody .= "Nombre: $name\n";
     $emailBody .= "Email: $email\n";
     $emailBody .= "Asunto: $subject\n\n";
     $emailBody .= "Mensaje:\n$message\n\n";
     $emailBody .= "---\n";
-    $emailBody .= "Enviado desde el portfolio de Samuel Portilla\n";
+    $emailBody .= "Enviado desde el portfolio de Symax\n";
     $emailBody .= "Fecha: " . date('Y-m-d H:i:s') . "\n";
     $emailBody .= "IP del remitente: " . ($_SERVER['REMOTE_ADDR'] ?? 'No disponible') . "\n";
     $emailBody .= "Para responder, usa: $email";
@@ -188,23 +188,22 @@ try {
         logError("Email enviado exitosamente");
         
         // ENVIAR EMAIL DE CONFIRMACIÓN A LA PERSONA
-        $confirmationSubject = "Confirmación de mensaje recibido - Samuel Portilla";
+        $confirmationSubject = "Confirmación de mensaje recibido - Symax";
         $confirmationBody = "Estimado/a $name,\n\n";
-        $confirmationBody .= "Gracias por contactarme a través de mi portafolio profesional.\n\n";
-        $confirmationBody .= "He recibido tu mensaje:\n";
+        $confirmationBody .= "Gracias por contactarnos a través de nuestro portafolio profesional.\n\n";
+        $confirmationBody .= "Hemos recibido tu mensaje:\n";
         $confirmationBody .= "• Asunto: $subject\n";
         $confirmationBody .= "• Mensaje: \"$message\"\n";
         $confirmationBody .= "• Fecha: " . date('d/m/Y H:i:s') . "\n\n";
-        $confirmationBody .= "Te responderé dentro de 24-48 horas hábiles.\n\n";
-        $confirmationBody .= "Si tienes alguna pregunta urgente, puedes contactarme directamente.\n\n";
+        $confirmationBody .= "Te responderemos dentro de 24-48 horas hábiles.\n\n";
+        $confirmationBody .= "Si tienes alguna pregunta urgente, puedes contactarnos directamente.\n\n";
         $confirmationBody .= "Saludos cordiales,\n\n";
-        $confirmationBody .= "Samuel Andrés Portilla Ardila\n";
-        $confirmationBody .= "Desarrollador de Software\n";
-        $confirmationBody .= "Email: samuelportilla.office@gmail.com\n\n";
+        $confirmationBody .= "Symax - Soluciones Digitales\n";
+        $confirmationBody .= "Email: contacto@symax.tech\n\n";
         $confirmationBody .= "---\n";
         $confirmationBody .= "Este es un email automático de confirmación.\n";
         $confirmationBody .= "Si no esperabas este mensaje, por favor ignóralo.\n";
-        $confirmationBody .= "© 2025 Samuel Portilla - Todos los derechos reservados.";
+        $confirmationBody .= "© 2026 Symax - Todos los derechos reservados.";
         
         // Enviar email de confirmación
         $confirmationResult = sendEmailViaAPI(
@@ -247,7 +246,7 @@ try {
     logError("Excepción capturada", ['message' => $e->getMessage()]);
     echo '<div style="background: #f8d7da; color: #721c24; padding: 15px; border: 1px solid #f5c6cb; border-radius: 5px; margin: 20px;">
             <strong>❌ Error:</strong> ' . htmlspecialchars($e->getMessage()) . '<br>
-            <small>Si el problema persiste, contacta directamente a samuelportilla.office@gmail.com</small>
+            <small>Si el problema persiste, contáctanos directamente a contacto@symax.tech</small>
           </div>';
 }
 ?>

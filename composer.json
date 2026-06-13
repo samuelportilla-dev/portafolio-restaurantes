@@ -1,14 +1,14 @@
 {
-    "name": "samuel/portafolio",
-    "description": "Portafolio personal de Samuel Portilla",
+    "name": "symax/portafolio",
+    "description": "Portafolio personal de Symax",
     "type": "project",
     "require": {
         "sendgrid/sendgrid": "^7.9"
     },
     "authors": [
         {
-            "name": "Samuel Portilla",
-            "email": "samuelportilla.office@gmail.com"
+            "name": "Symax",
+            "email": "contacto@symax.tech"
         }
     ]
 }
