@@ -348,4 +348,102 @@ document.addEventListener('DOMContentLoaded', () => {
             updateCarousel(0);
         }, 300);
     }
+
+    // ============================================
+    // MODAL CALCULADORA (ROI)
+    // ============================================
+    const calculatorModal = document.getElementById('calculatorModal');
+    const openCalcBtn = document.getElementById('openCalcBtn');
+    const closeCalcBtn = document.getElementById('closeCalcBtn');
+    const rangeOrders = document.getElementById('rangeOrders');
+    const rangeTime = document.getElementById('rangeTime');
+    const valOrders = document.getElementById('valOrders');
+    const valTime = document.getElementById('valTime');
+    const resTime = document.getElementById('resTime');
+    const resMoney = document.getElementById('resMoney');
+
+    if (calculatorModal && openCalcBtn) {
+        // Abrir modal
+        openCalcBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            calculatorModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            calculateROI();
+        });
+
+        // Cerrar modal con botón X
+        closeCalcBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            calculatorModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Cerrar modal al hacer click fuera de la tarjeta
+        calculatorModal.addEventListener('click', (e) => {
+            if (e.target === calculatorModal) {
+                calculatorModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Cerrar modal con ESC
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && calculatorModal.classList.contains('active')) {
+                calculatorModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Eventos de cambios en inputs de rango
+        rangeOrders.addEventListener('input', () => {
+            valOrders.textContent = `${rangeOrders.value} pedidos`;
+            calculateROI();
+        });
+
+        rangeTime.addEventListener('input', () => {
+            valTime.textContent = `${rangeTime.value} min`;
+            calculateROI();
+        });
+
+        // Función de cálculo matemático
+        function calculateROI() {
+            const orders = parseInt(rangeOrders.value);
+            const minsPerOrder = parseInt(rangeTime.value);
+
+            // Horas ganadas al mes (Symax automatiza el 85% de esos minutos)
+            const hoursSaved = Math.round((orders * minsPerOrder * 0.85) / 60);
+            resTime.textContent = `${hoursSaved} hrs`;
+
+            // Dinero ahorrado (COP): $7.500 COP/hora de tiempo + 4% de tasa de errores prevenidos a $10.000 COP promedio c/u
+            const rawMoneySaved = (hoursSaved * 7500) + (orders * 0.04 * 10000);
+            
+            // Formatear pesos colombianos (Ej: $350.000 COP)
+            const formattedMoney = new Intl.NumberFormat('es-CO', {
+                style: 'currency',
+                currency: 'COP',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(rawMoneySaved);
+
+            resMoney.textContent = `${formattedMoney} COP`;
+        }
+    }
+
+    // ============================================
+    // FAQ ACCORDION LOGIC
+    // ============================================
+    const faqAccordions = document.querySelectorAll('.faq-accordion');
+    faqAccordions.forEach(acc => {
+        const header = acc.querySelector('.faq-header');
+        header.addEventListener('click', () => {
+            const isActive = acc.classList.contains('active');
+            
+            // Cerrar todos los demás
+            faqAccordions.forEach(item => item.classList.remove('active'));
+
+            if (!isActive) {
+                acc.classList.add('active');
+            }
+        });
+    });
 });

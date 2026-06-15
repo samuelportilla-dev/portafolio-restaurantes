@@ -44,9 +44,9 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#inicio" class="nav-link">Inicio</a></li>
                 <li><a href="#problema" class="nav-link">El Problema</a></li>
-                <li><a href="#testimonios" class="nav-link">Opiniones</a></li>
-                <li><a href="#portafolio" class="nav-link">Portafolio</a></li>
-                <li><a href="#como-funciona" class="nav-link">Cómo Funciona</a></li>
+                <li><a href="#testimonios" class="nav-link">Testimonios</a></li>
+                <li><a href="#portafolio" class="nav-link">Modelos</a></li>
+                <li><a href="integraciones.html" class="nav-link">Integraciones</a></li>
                 <li><a href="#contacto" class="nav-link nav-cta-link">Agendar Demo</a></li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Abrir menú de navegación">
@@ -174,14 +174,14 @@
                                     <span>"Eran $38.000, no $35.000..."</span>
                                 </div>
                             </li>
-                            <li>
+                            <li class="desktop-only">
                                 <div class="pain-icon"><i class="fas fa-head-side-virus"></i></div>
                                 <div class="pain-text">
                                     <strong>Estrés el sábado por la noche</strong>
                                     <span>Cocinando, respondiendo chats y sumando</span>
                                 </div>
                             </li>
-                            <li>
+                            <li class="desktop-only">
                                 <div class="pain-icon"><i class="fas fa-map-marker-alt"></i></div>
                                 <div class="pain-text">
                                     <strong>"¿Cuál era la dirección?"</strong>
@@ -221,14 +221,14 @@
                                     <span>Con dirección, total y detalle exacto</span>
                                 </div>
                             </li>
-                            <li>
+                            <li class="desktop-only">
                                 <div class="benefit-icon"><i class="fas fa-utensils"></i></div>
                                 <div class="benefit-text">
                                     <strong>Solo cocinas y despachas</strong>
                                     <span>Cero errores, cero tiempo perdido</span>
                                 </div>
                             </li>
-                            <li>
+                            <li class="desktop-only">
                                 <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
                                 <div class="benefit-text">
                                     <strong>Tu negocio se ve profesional</strong>
@@ -238,6 +238,17 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+
+            <!-- ROI calculator promo banner -->
+            <div class="calculator-promo reveal">
+                <div class="promo-content">
+                    <h3>¿Quieres saber cuánto ahorrarás en tu restaurante?</h3>
+                    <p>Calcula en segundos el tiempo de atención y dinero por errores que evitarás con Symax.</p>
+                </div>
+                <button class="btn btn-primary" id="openCalcBtn">
+                    <i class="fas fa-calculator"></i> Calcular mi Ahorro
+                </button>
             </div>
         </div>
     </section>
@@ -303,7 +314,7 @@
                         "El mayor alivio fue dejar de responder la misma pregunta de '¿a cómo las papas?' cincuenta veces en una sola noche."
                     </blockquote>
                     <p class="testimonial-text">
-                        Al principio dudaba si a la gente en Colombia le iba a gustar pedir por un link, pero la verdad nos sorprendió. Antes los fines de semana eran un caos en WhatsApp; acumulábamos chats y muchos clientes se aburrían de esperar y nos cancelaban. Con el sistema de Symax, el cliente elige sus adiciones y nos llega el pedido detallado. Nos ahorra muchísimo tiempo en caja y evitamos confusiones con los pedidos que despachamos.
+                        Dudaba de los menús digitales, pero nos sorprendió. WhatsApp ya no colapsa en horas pico y los pedidos llegan organizados directamente a la cocina sin errores.
                     </p>
                     <div class="testimonial-footer">
                         <span class="verified-badge"><i class="fas fa-check-circle"></i> Cliente Verificado — Colombia</span>
@@ -337,7 +348,7 @@
                         "La verdad es que nos quitó un peso de encima con el enredo de las cuentas y comandas los domingos."
                     </blockquote>
                     <p class="testimonial-text">
-                        Teníamos el problema de que al escribir los pedidos a mano a veces sumábamos mal o se nos pasaba cobrar alguna bebida en horas pico. El menú digital hace la cuenta exacta y le muestra el total al cliente de una vez. Además, la opción de poder apagar un plato desde el celular si se nos agota la carne o el pollo a mitad de la jornada nos ha evitado muchos reclamos de clientes. Es súper práctico.
+                        Evitamos por completo las sumas erróneas y las bebidas olvidadas. El menú calcula el total al instante y apagar platos agotados desde el celular es facilísimo.
                     </p>
                     <div class="testimonial-footer">
                         <span class="verified-badge"><i class="fas fa-check-circle"></i> Cliente Verificado — Colombia</span>
@@ -371,7 +382,7 @@
                         "Queríamos que el menú se viera tan bien como la comida que servimos, sin pagar comisiones absurdas."
                     </blockquote>
                     <p class="testimonial-text">
-                        Nuestros clientes aprecian mucho la presentación de los platos, y los PDFs tradicionales se ven borrosos o tardan en cargar. Con este link las fotos se ven impecables y carga al instante. No pagamos comisiones por pedido como en otras plataformas y la gente pide directamente a nuestro WhatsApp. El equipo de Symax estuvo muy pendiente de la configuración y de que todo quedara perfecto con los colores de nuestra marca.
+                        Las fotos se ven impecables y carga al instante. Recibimos pedidos directos al WhatsApp sin pagar comisiones abusivas y con un soporte excelente de Symax.
                     </p>
                     <div class="testimonial-footer">
                         <span class="verified-badge"><i class="fas fa-check-circle"></i> Cliente Verificado — Colombia</span>
@@ -388,10 +399,10 @@
     <section id="portafolio" class="portfolio-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-badge">Prueba social</span>
-                <h2 class="section-title">Así se ven los negocios que ya dieron el salto</h2>
+                <span class="section-badge">Demos Interactivas</span>
+                <h2 class="section-title">Explora nuestros modelos de menú</h2>
                 <p class="section-subtitle">
-                    Cada tipo de restaurante tiene sus necesidades. Mira cómo resolvemos cada una.
+                    Elige la estructura ideal según el tipo de comida y la operación de tu restaurante. Haz clic para probarlos.
                 </p>
             </div>
 
@@ -621,6 +632,71 @@
     </section>
 
     <!-- ============================================ -->
+    <!-- NUEVA SECCIÓN: PREGUNTAS FRECUENTES (FAQ)    -->
+    <!-- ============================================ -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Preguntas Frecuentes</span>
+                <h2 class="section-title">Resolvemos tus dudas</h2>
+                <p class="section-subtitle">
+                    Todo lo que necesitas saber antes de digitalizar tu restaurante con Symax.
+                </p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-accordion">
+                    <div class="faq-header">
+                        <h3 class="faq-title">¿Tengo que pagar comisiones por cada venta?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-body">
+                            <p><strong>No, absolutamente ninguna comisión.</strong> A diferencia de plataformas de domicilios tradicionales, en Symax no te cobramos porcentaje por tus ventas. Pagas una tarifa fija por tu plan y todo lo que vendas es 100% tuyo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-accordion">
+                    <div class="faq-header">
+                        <h3 class="faq-title">¿Es necesario tener un computador o funciona desde el celular?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-body">
+                            <p><strong>Funciona 100% desde cualquier dispositivo.</strong> Puedes gestionar tu menú, actualizar precios, activar o desactivar platos y recibir todos los pedidos directamente en el WhatsApp de tu celular o tablet. No necesitas invertir en computadores costosos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-accordion">
+                    <div class="faq-header">
+                        <h3 class="faq-title">¿Cómo se actualizan los platos si se agota algún ingrediente?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-body">
+                            <p><strong>Es instantáneo.</strong> Con el panel administrativo de Symax en tu celular, puedes apagar o encender un plato con un solo toque. El cambio se refleja de inmediato en tu menú digital, evitando que los clientes pidan algo que no tienes en stock.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-accordion">
+                    <div class="faq-header">
+                        <h3 class="faq-title">¿Cuánto tiempo tardan en entregar el menú listo?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-body">
+                            <p><strong>Tu menú estará listo en menos de 5 días hábiles.</strong> Nosotros nos encargamos de toda la configuración inicial: cargamos tus platos, fotos, precios y configuramos las adiciones para que tú solo tengas que empezar a compartir el link a tus clientes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
     <!-- 5. FOOTER & CTA FINAL — Micro compromiso -->
     <!-- ============================================ -->
     <section id="contacto" class="cta-final-section">
@@ -680,8 +756,7 @@
                 <div class="footer-links">
                     <a href="#inicio">Inicio</a>
                     <a href="#problema">El Problema</a>
-                    <a href="#testimonios">Opiniones</a>
-                    <a href="#portafolio">Portafolio</a>
+                    <a href="#testimonios">Testimonios</a>
                     <a href="#como-funciona">Cómo Funciona</a>
                     <a href="integraciones.html">Integraciones</a>
                     <a href="soporte.html">Soporte</a>
@@ -712,6 +787,66 @@
         <i class="fab fa-whatsapp"></i>
         <span class="whatsapp-tooltip">¿Hablamos?</span>
     </a>
+
+    <!-- MODAL CALCULADORA DE AHORRO (ROI) -->
+    <div id="calculatorModal" class="modal-calculator-overlay">
+        <div class="modal-calculator-card">
+            <button class="modal-calculator-close" id="closeCalcBtn" aria-label="Cerrar calculadora">&times;</button>
+            <div class="modal-calculator-header">
+                <i class="fas fa-calculator calculator-header-icon"></i>
+                <h2>Calcula tu Ahorro con Symax</h2>
+                <p>Descubre cuánto tiempo y dinero dejas de perder al mes automatizando tu restaurante.</p>
+            </div>
+            
+            <div class="calculator-inputs">
+                <div class="input-group-calc">
+                    <div class="input-labels-calc">
+                        <label for="rangeOrders">Pedidos por WhatsApp al mes</label>
+                        <span class="calc-value" id="valOrders">400 pedidos</span>
+                    </div>
+                    <input type="range" id="rangeOrders" min="100" max="2000" step="50" value="400">
+                </div>
+
+                <div class="input-group-calc">
+                    <div class="input-labels-calc">
+                        <label for="rangeTime">Minutos perdidos por pedido</label>
+                        <span class="calc-value" id="valTime">5 min</span>
+                    </div>
+                    <p class="input-help-calc">(Tiempo estimado respondiendo chats, enviando la carta, cobrando y sumando)</p>
+                    <input type="range" id="rangeTime" min="2" max="15" step="1" value="5">
+                </div>
+            </div>
+
+            <div class="calculator-results">
+                <div class="result-box-calc">
+                    <div class="result-icon-calc"><i class="fas fa-clock"></i></div>
+                    <div>
+                        <span class="result-number-calc" id="resTime">28 hrs</span>
+                        <span class="result-label-calc">Tiempo libre ganado al mes</span>
+                    </div>
+                </div>
+                <div class="result-box-calc">
+                    <div class="result-icon-calc"><i class="fas fa-wallet"></i></div>
+                    <div>
+                        <span class="result-number-calc text-highlight-calc" id="resMoney">$350.000 COP</span>
+                        <span class="result-label-calc">Ahorro estimado mensual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calculator-explanation">
+                <span><i class="fas fa-info-circle"></i> ¿Cómo calculamos esto?</span>
+                <p>Asumimos que Symax automatiza el <strong>85% del tiempo</strong> de toma de pedidos. El dinero ahorrado estima el costo de las horas operativas recuperadas ($7.500/hr) y la prevención de pérdidas por un <strong>4% de errores en cuentas sumadas a mano</strong> (valorado en $10.000 c/u).</p>
+            </div>
+
+            <div class="calculator-footer-cta">
+                <p>¿Listo para automatizar y ganar este tiempo libre?</p>
+                <a href="https://wa.me/573133646672?text=Hola%20Symax%2C%20us%C3%A9%20la%20calculadora%20de%20ahorro%20y%20quiero%20automatizar%20mi%20restaurante." target="_blank" class="btn btn-primary btn-calc-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Agendar Demo
+                </a>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
