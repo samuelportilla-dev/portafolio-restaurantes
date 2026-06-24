@@ -446,4 +446,123 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // ============================================
+    // MODAL DE CAPTACIÓN DE LEADS (Desktop)
+    // ============================================
+    const leadModal = document.getElementById('leadModal');
+    const closeLeadBtn = document.getElementById('closeLeadBtn');
+    const leadForm = document.getElementById('leadForm');
+    const leadFormView = document.getElementById('leadFormView');
+    const leadSuccessView = document.getElementById('leadSuccessView');
+    const btnSuccessClose = document.getElementById('btnSuccessClose');
+
+    // Detección de dispositivo Desktop (pantallas de 1024px o más)
+    const isDesktop = () => window.innerWidth >= 1024;
+
+    // Interceptar clics en enlaces de WhatsApp si es Desktop
+    document.addEventListener('click', (e) => {
+        if (!isDesktop()) return;
+
+        // Buscar si el click fue en un enlace de WhatsApp
+        const anchor = e.target.closest('a');
+        if (anchor && anchor.href && (anchor.href.includes('wa.me') || anchor.href.includes('api.whatsapp.com'))) {
+            e.preventDefault();
+            
+            // Si el modal de la calculadora está activo, cerrarlo
+            if (calculatorModal && calculatorModal.classList.contains('active')) {
+                calculatorModal.classList.remove('active');
+            }
+
+            // Mostrar modal de captación de leads
+            leadFormView.style.display = 'block';
+            leadSuccessView.style.display = 'none';
+            leadForm.reset();
+            leadModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    });
+
+    if (leadModal) {
+        // Cerrar modal con botón X
+        closeLeadBtn.addEventListener('click', () => {
+            leadModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Cerrar modal al hacer click fuera
+        leadModal.addEventListener('click', (e) => {
+            if (e.target === leadModal) {
+                leadModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Cerrar modal con ESC
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && leadModal.classList.contains('active')) {
+                leadModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Botón de cerrar en pantalla de éxito
+        if (btnSuccessClose) {
+            btnSuccessClose.addEventListener('click', () => {
+                leadModal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+
+        // Envío de formulario mediante API a Cloudflare Pages Function
+        if (leadForm) {
+            leadForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const submitBtn = leadForm.querySelector('.btn-lead-submit');
+                const btnText = submitBtn.querySelector('.btn-text');
+                const btnSpinner = submitBtn.querySelector('.btn-spinner');
+
+                // Mostrar estado de carga
+                submitBtn.disabled = true;
+                btnText.style.display = 'none';
+                btnSpinner.style.display = 'inline-block';
+
+                const formData = {
+                    name: document.getElementById('leadName').value,
+                    restaurant: document.getElementById('leadRestaurant').value,
+                    phone: document.getElementById('leadPhone').value,
+                    message: document.getElementById('leadMessage').value
+                };
+
+                try {
+                    const response = await fetch('/api/submit-lead', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok && result.success) {
+                        // Ocultar formulario y mostrar pantalla de éxito
+                        leadFormView.style.display = 'none';
+                        leadSuccessView.style.display = 'block';
+                    } else {
+                        alert(result.error || 'Ocurrió un error al enviar la información. Por favor intenta de nuevo.');
+                    }
+                } catch (error) {
+                    console.error('Error submitting lead:', error);
+                    alert('Error de conexión. Por favor verifica tu red e intenta de nuevo.');
+                } finally {
+                    // Restaurar botón
+                    submitBtn.disabled = false;
+                    btnText.style.display = 'inline-block';
+                    btnSpinner.style.display = 'none';
+                }
+            });
+        }
+    }
 });

@@ -841,6 +841,61 @@
         </div>
     </div>
 
+    <!-- MODAL DE CAPTACIÓN DE LEADS (Desktop) -->
+    <div id="leadModal" class="modal-lead-overlay">
+        <div class="modal-lead-card">
+            <button class="modal-lead-close" id="closeLeadBtn" aria-label="Cerrar modal">&times;</button>
+            
+            <!-- Vista del Formulario -->
+            <div id="leadFormView">
+                <div class="modal-lead-header">
+                    <div class="modal-lead-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h2>Hablemos de tu restaurante</h2>
+                    <p>Déjanos tus datos de contacto y un asesor se comunicará contigo de inmediato.</p>
+                </div>
+                
+                <form id="leadForm" class="modal-lead-form">
+                    <div class="form-group-lead">
+                        <label for="leadName"><i class="fas fa-user"></i> Tu Nombre</label>
+                        <input type="text" id="leadName" name="name" placeholder="Ej. Juan Pérez" required>
+                    </div>
+                    
+                    <div class="form-group-lead">
+                        <label for="leadRestaurant"><i class="fas fa-store"></i> Nombre del Restaurante</label>
+                        <input type="text" id="leadRestaurant" name="restaurant" placeholder="Ej. Burguer & Co." required>
+                    </div>
+                    
+                    <div class="form-group-lead">
+                        <label for="leadPhone"><i class="fas fa-phone-alt"></i> WhatsApp de Contacto</label>
+                        <input type="tel" id="leadPhone" name="phone" placeholder="Ej. +57 313 1234567" required>
+                    </div>
+                    
+                    <div class="form-group-lead">
+                        <label for="leadMessage"><i class="fas fa-comment-alt"></i> ¿Alguna pregunta o requerimiento especial? (Opcional)</label>
+                        <textarea id="leadMessage" name="message" placeholder="Cuéntanos un poco sobre tu negocio..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-lead-submit">
+                        <span class="btn-text">Enviar Datos y Agendar</span>
+                        <span class="btn-spinner" style="display: none;"><i class="fas fa-spinner fa-spin"></i></span>
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Vista de Éxito -->
+            <div id="leadSuccessView" style="display: none;" class="modal-lead-success">
+                <div class="success-icon-wrapper">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>¡Información recibida!</h2>
+                <p>Hemos registrado los datos de tu restaurante con éxito. Uno de nuestros asesores de <strong>Symax</strong> te contactará al número proporcionado vía WhatsApp en los próximos minutos.</p>
+                <button type="button" class="btn btn-primary" id="btnSuccessClose">Entendido</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
