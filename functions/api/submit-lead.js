@@ -1,12 +1,12 @@
 export async function onRequestPost(context) {
     try {
         const data = await context.request.json();
-        const { name, restaurant, phone, message } = data;
+        const { name, restaurant, phone, email, message } = data;
 
         // Validaciones básicas
-        if (!name || !phone || !restaurant) {
+        if (!name || !phone || !restaurant || !email) {
             return new Response(
-                JSON.stringify({ success: false, error: "Faltan campos obligatorios (nombre, teléfono o restaurante)" }),
+                JSON.stringify({ success: false, error: "Faltan campos obligatorios (nombre, email, teléfono o restaurante)" }),
                 { 
                     status: 400, 
                     headers: { "Content-Type": "application/json" } 
@@ -18,6 +18,7 @@ export async function onRequestPost(context) {
             name,
             restaurant,
             phone,
+            email,
             message: message || "",
             timestamp: new Date().toISOString(),
             ip: context.request.headers.get("CF-Connecting-IP") || "desconocido"

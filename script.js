@@ -532,6 +532,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     name: document.getElementById('leadName').value,
                     restaurant: document.getElementById('leadRestaurant').value,
                     phone: document.getElementById('leadPhone').value,
+                    email: document.getElementById('leadEmail').value,
                     message: document.getElementById('leadMessage').value
                 };
 
