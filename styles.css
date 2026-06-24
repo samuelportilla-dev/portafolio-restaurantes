@@ -2667,7 +2667,7 @@ ul { list-style: none; }
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-lg);
     width: 90%;
-    max-width: 500px;
+    max-width: 680px;
     padding: var(--space-2xl);
     position: relative;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
@@ -2743,9 +2743,23 @@ ul { list-style: none; }
 }
 
 .modal-lead-form {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: var(--space-md);
+}
+
+.grid-span-2 {
+    grid-column: span 2;
+}
+
+@media (max-width: 620px) {
+    .modal-lead-form {
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+    }
+    .grid-span-2 {
+        grid-column: span 1;
+    }
 }
 
 .form-group-lead {
