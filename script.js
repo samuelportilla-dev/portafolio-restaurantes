@@ -535,6 +535,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     message: document.getElementById('leadMessage').value
                 };
 
+                // Si se abre el archivo directamente desde el disco (file://) sin servidor local, simulamos el éxito.
+                if (window.location.protocol === 'file:') {
+                    console.warn('Ejecutando desde file://. Se simula el envío del lead:', formData);
+                    setTimeout(() => {
+                        leadFormView.style.display = 'none';
+                        leadSuccessView.style.display = 'block';
+                        submitBtn.disabled = false;
+                        btnText.style.display = 'inline-block';
+                        btnSpinner.style.display = 'none';
+                    }, 850);
+                    return;
+                }
+
                 try {
                     const response = await fetch('/api/submit-lead', {
                         method: 'POST',
